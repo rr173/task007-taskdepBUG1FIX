@@ -31,7 +31,8 @@ func (t *Task) clone() *Task {
 	}
 	c := *t
 	if t.DependsOn != nil {
-		c.DependsOn = append([]string(nil), t.DependsOn...)
+		c.DependsOn = make([]string, len(t.DependsOn))
+		copy(c.DependsOn, t.DependsOn)
 	}
 	return &c
 }
